@@ -70,8 +70,7 @@ class _FindTheDogScreen extends State<FindTheDogScreen> {
         backgroundColor: GameColors.snackbarBg,
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      // TODO: Ask design to change this to Pressed_correct and add static state
-    } else if (toStateName == "Pressed") {
+    } else if (toStateName == "Pressed_correct") {
       _handleGuessTap(false);
     } else if (toStateName == "Pressed_correct_static") {
       setState(() {

@@ -30,7 +30,7 @@ class _RiveButtonState extends State<RiveButton> {
       height: 150,
       child: GestureDetector(
         child: RiveAnimation.asset(
-          'findthedog_v3.riv',
+          'findthedog_v4.riv',
           artboard: widget.isReal ? "Dog" : "Shiba",
           stateMachines: const ["ButtonMachine"],
           onInit: _onRiveInit,
