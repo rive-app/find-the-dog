@@ -9,7 +9,7 @@ class EndState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RiveAnimation.asset('findthedog.riv',
+    return RiveAnimation.asset('assets/findthedog.riv',
         artboard:
             gameState == GameStatus.lost ? "LoseEndState" : "WinEndState");
   }
