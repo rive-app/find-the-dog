@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:find_the_dog/colors.dart';
+import 'package:find_the_dog/enums.dart';
 import 'package:find_the_dog/rive_button.dart';
 
 class FindTheDogScreen extends StatefulWidget {
@@ -12,6 +13,8 @@ class FindTheDogScreen extends StatefulWidget {
 }
 
 class _FindTheDogScreen extends State<FindTheDogScreen> {
+  GameStatus gameState = GameStatus.inProgress;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,13 +22,15 @@ class _FindTheDogScreen extends State<FindTheDogScreen> {
         title: Text(widget.title),
         backgroundColor: GameColors.primary1,
       ),
-      body: LayoutBuilder(
-          builder: (BuildContext ctx, BoxConstraints constraints) {
-        return SizedBox(
-            width: constraints.maxWidth,
-            height: constraints.maxHeight,
-            child: const RiveButton());
-      }),
+      body: SizedBox.expand(
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+              color: gameState == GameStatus.inProgress
+                  ? GameColors.background
+                  : GameColors.backgroundEndState),
+          child: const RiveButton(),
+        ),
+      ),
     );
   }
 }

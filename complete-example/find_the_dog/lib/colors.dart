@@ -8,4 +8,6 @@ abstract class GameColors {
   static const Color snackbarBg = Color(0xFFB970F2);
 
   static const Color snackbarText = Color(0xFF2D2D2D);
+
+  static const Color backgroundEndState = Color(0xFFFFF7EF);
 }
