@@ -81,7 +81,7 @@ class _FindTheDogScreen extends State<FindTheDogScreen> {
 
   // Render 20 widgets, of which one is the true dog button
   List<Widget> renderButtons() {
-    int dogIdx = 0;
+    int dogIdx = _getDogIdx();
     List<Widget> list = List.empty(growable: true);
     for (var i = 0; i < 15; i++) {
       bool isReal = i == dogIdx;
@@ -94,29 +94,23 @@ class _FindTheDogScreen extends State<FindTheDogScreen> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("$animationsRunning");
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        backgroundColor: GameColors.primary1,
-      ),
-      body: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-        return SizedBox(
-          width: constraints.maxWidth,
-          height: constraints.maxHeight,
-          child: Stack(
-            children: <Widget>[
-              gameState == GameStatus.inProgress || animationsRunning >= 1
-                  ? GridView.count(
-                      crossAxisCount: 5, children: [...renderButtons()])
-                  : EndState(
-                      gameState:
-                          gameState), // TODO: Replace with end_state widget
-            ],
+        appBar: AppBar(
+          title: Text(widget.title),
+          backgroundColor: GameColors.primary1,
+        ),
+        body: SizedBox.expand(
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+                color:
+                    gameState == GameStatus.inProgress || animationsRunning >= 1
+                        ? GameColors.background
+                        : GameColors.backgroundEndState),
+            child: gameState == GameStatus.inProgress || animationsRunning >= 1
+                ? GridView.count(
+                    crossAxisCount: 5, children: [...renderButtons()])
+                : EndState(gameState: gameState),
           ),
-        );
-      }),
-    );
+        ));
   }
 }
