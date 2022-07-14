@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:find_the_dog/colors.dart';
 import 'package:find_the_dog/enums.dart';
 import 'package:find_the_dog/rive_button.dart';
+import 'package:find_the_dog/end_state.dart';
 
 class FindTheDogScreen extends StatefulWidget {
   const FindTheDogScreen({Key? key, required this.title}) : super(key: key);
